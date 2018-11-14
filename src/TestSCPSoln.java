@@ -1,5 +1,4 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import soln.solver.ChvatalSolver;
 import soln.solver.GreedyCostSolver;
 import soln.solver.GreedyCoverageSolver;
 import soln.solver.GreedySolver;
+import soln.util.ElementSet;
 
 import java.io.*;
 
@@ -20,9 +20,15 @@ public class TestSCPSoln {
 	
 	public static BufferedReader cin = new BufferedReader(new InputStreamReader(System.in));
 	
+
+
+	
+	
 	public static void main(String[] args) throws IOException {
 		
 		SCPModel model = new SCPModel();
+		
+		
 		
 		// Create a weighted SCP with
 		//   Set 1: weight 3.0, elements { 1, 3, 5, 7, 9 }
@@ -31,12 +37,54 @@ public class TestSCPSoln {
 		//   Set 4: weight 5.0, elements { 2, 4, 6, 8, 100 }
 		//   Set 5: weight 2.0, elements { 2, 6, 100 }
 		//   Set 6: weight 2.0, elements { 4, 8 }
-		model.addSetToCover(6, 2.0, Arrays.asList(new Integer[] {4,8}));
+		model.addSetToCover(6324, 26748.0, Arrays.asList(new Integer[] {4,8}));
 		model.addSetToCover(5, 2.0, Arrays.asList(new Integer[] {2,6,100}));
 		model.addSetToCover(4, 5.0, Arrays.asList(new Integer[] {2,4,6,8,100}));
 		model.addSetToCover(3, 2.0, Arrays.asList(new Integer[] {5,7,9}));
 		model.addSetToCover(2, 2.0, Arrays.asList(new Integer[] {1,5,9}));
 		model.addSetToCover(1, 3.0, Arrays.asList(new Integer[] {1,3,5,7,9}));
+		model.addSetToCover(1, 3.0, Arrays.asList(new Integer[] {1,3,5}));
+		
+		
+//		ElementSet e1 = new ElementSet(1234, 67123.65, Arrays.asList(new Integer[] {1,3,5,7,9,1}));
+////		ElementSet e2 = new ElementSet(2, 2.0, Arrays.asList(new Integer[] {1,5,9}));
+////		ElementSet e3 = new ElementSet(3, 2.0, Arrays.asList(new Integer[] {5,7,9}));
+////		ElementSet e4 = new ElementSet(3, 2.0, Arrays.asList(new Integer[] {5,7,9}));
+////		
+//		System.out.print(e1);
+		//System.out.println(model);
+//		System.out.println("Testing compare");
+//		System.out.println(e1.compareTo(model));
+//		System.out.println(e1.compareTo(e3));
+//		System.out.println(e3.compareTo(e1));
+//		
+//		System.out.println("Testing equals");
+//		System.out.println(e1.equals(model));
+//		System.out.println(e1.equals(e3));
+//		System.out.println(e3.equals(e4));
+//		
+//		System.out.println(e1);
+//		System.out.println(model);
+//		
+//		GreedyCoverageSolver CoverageMethod = new GreedyCoverageSolver();
+//		CoverageMethod.setMinCoverage(0.9); 
+//		CoverageMethod.setModel(model);
+//		CoverageMethod.solve();
+//		CoverageMethod.print();
+//		
+//		
+//		GreedyCostSolver CostMethod = new GreedyCostSolver();
+//		CostMethod.setMinCoverage(0.6); 
+//		CostMethod.setModel(model);
+//		CostMethod.solve();
+//		CostMethod.print();
+//		
+//		ChvatalSolver ChvatalMethod = new ChvatalSolver();
+//		ChvatalMethod.setMinCoverage(0.6); 
+//		ChvatalMethod.setModel(model);
+//		ChvatalMethod.solve();
+//		ChvatalMethod.print();
+		
 		
 		GreedyCoverageSolver CoverageMethod = new GreedyCoverageSolver();
 		GreedyCostSolver CostMethod = new GreedyCostSolver();
@@ -50,7 +98,7 @@ public class TestSCPSoln {
 		System.out.println("==========================================================================");
 		printComparison(solvers, model, 0.9);
 	}
-		
+
 	// set minimum coverage level for solution methods
 	public static void printComparison(List<GreedySolver> solvers, SCPModel model, double alpha) {
 			
@@ -105,6 +153,10 @@ public class TestSCPSoln {
 			overall = timeWinner.getName();
 		
 		System.out.println("Overall winner: " + overall + "\n");
+		
 	}
 	
+	
+	
 }
+//}
